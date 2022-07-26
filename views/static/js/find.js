@@ -1,4 +1,4 @@
-const findPW = () => {
+const findPW = () => { //패스워드를 찾는 부분
     // 유효성 검사
     if (!$('#email').val()) {
         alert("이메일을 입력해주세요.");
@@ -7,7 +7,9 @@ const findPW = () => {
     }
 
     let findForm = $("#findForm").serialize();
-
+    
+    //비밀번호 찾기 : 1번
+    //email을 서버에 넘겨줍니다.
     $.ajax({
         type: "POST",
         url: "http://localhost:8080/user/find/password",

@@ -14,16 +14,17 @@ const login = () => {
 
     let loginForm = $("#loginForm").serialize();
 
+    //로그인 : 1번
     $.ajax({
         type: "POST",
         url: "http://localhost:8080/user/login",
-        headers: {
-            accessToken: $.cookie("accessToken")
-        },
         data: loginForm,
         success: (res) => {
             console.log(res);
 
+            //만약 로그인 정보를 받아왔으면
+            //token값을 브라우저 쿠키에 저장합니다.
+            //email과 name또한 sessionStorage에 저장합니다.
             $.cookie("accessToken", res.accessToken, { expires: 1, path: '/' });
             sessionStorage.setItem("email", res.email);
             sessionStorage.setItem("name", res.name);
